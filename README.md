@@ -32,5 +32,5 @@ Linkedin learning also offers many courses.
 # Topics
 #### Join/merge
  - [dplyr_join](https://www.guru99.com/r-dplyr-tutorial.html)
- - [How to merge data in R using R merge, dplyr, or data.table](https://www.infoworld.com/article/3454356/how-to-merge-data-in-r-using-r-merge-dplyr-or-datatable.html)
- - [Join] (http://rstudio-pubs-static.s3.amazonaws.com/227171_618ebdce0b9d44f3af65700e833593db.html)
+ - [How to merge data in R using R merge, dplyr, or data.table](https://www.infoworld.com/article/3454356/how-to-merge-data-in-r-using-r-merge-dplyr-or-datatable.html
+ - [Join](http://rstudio-pubs-static.s3.amazonaws.com/227171_618ebdce0b9d44f3af65700e833593db.html)
