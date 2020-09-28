@@ -35,3 +35,5 @@ Linkedin learning also offers many courses.
  - [How to merge data in R using R merge, dplyr, or data.table](https://www.infoworld.com/article/3454356/how-to-merge-data-in-r-using-r-merge-dplyr-or-datatable.html)
  
  - [Join](http://rstudio-pubs-static.s3.amazonaws.com/227171_618ebdce0b9d44f3af65700e833593db.html)
+ 
+ - [dplyr join warning: joining factors with different levels](https://stackoverflow.com/questions/30468412/dplyr-join-warning-joining-factors-with-different-levels/30468468)
