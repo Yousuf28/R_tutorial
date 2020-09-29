@@ -31,6 +31,7 @@ Linkedin learning also offers many courses.
 
 # Topics
 #### Join/merge
+ - [How to perform merges (joins) on two or more data frames with base R, tidyverse and data.table](https://jozef.io/r006-merge/)  
  - [dplyr_join](https://www.guru99.com/r-dplyr-tutorial.html)
  - [How to merge data in R using R merge, dplyr, or data.table](https://www.infoworld.com/article/3454356/how-to-merge-data-in-r-using-r-merge-dplyr-or-datatable.html)
  
