@@ -38,3 +38,4 @@ Linkedin learning also offers many courses.
  - [Join](http://rstudio-pubs-static.s3.amazonaws.com/227171_618ebdce0b9d44f3af65700e833593db.html)
  
  - [dplyr join warning: joining factors with different levels](https://stackoverflow.com/questions/30468412/dplyr-join-warning-joining-factors-with-different-levels/30468468)
+ - [A data.table and dplyr tour](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/)
