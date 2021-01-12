@@ -30,6 +30,12 @@ Linkedin learning also offers many courses.
 
 
 # Topics
+
+##### RStudio shortcut
+
+- [r-studio-shortcuts-and-tips](https://appsilon.com/r-studio-shortcuts-and-tips-2/)
+- [r-studio-shortcuts-and-tips-part-2](https://appsilon.com/r-studio-shortcuts-and-tips-part-2/)
+
 #### Join/merge
  - [How to perform merges (joins) on two or more data frames with base R, tidyverse and data.table](https://jozef.io/r006-merge/)  
  - [dplyr_join](https://www.guru99.com/r-dplyr-tutorial.html)
