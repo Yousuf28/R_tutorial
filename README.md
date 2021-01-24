@@ -16,6 +16,7 @@ There are 10 courses in Data Science Specialization.
 
 Datacamp offers many courses in R. See datacamp website.
 - [Introduction to R_Datacamp](https://www.datacamp.com/courses/free-introduction-to-r)
+- [Notes](https://xiangxing98.github.io/free-introduction-to-r.html)
 
 Linkedin learning also offers many courses.
 - [Data Wrangling in R_linkedin Learning](https://www.linkedin.com/learning/data-wrangling-in-r)
