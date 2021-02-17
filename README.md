@@ -21,6 +21,8 @@ Datacamp offers many courses in R. See datacamp website.
 Linkedin learning also offers many courses.
 - [Data Wrangling in R_linkedin Learning](https://www.linkedin.com/learning/data-wrangling-in-r)
 
+#### Books
+- [Modern R](https://b-rodrigues.github.io/modern_R/)
 
 #### ggplot tutorial
 
