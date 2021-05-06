@@ -56,3 +56,5 @@ Linkedin learning also offers many courses.
  
  - [dplyr join warning: joining factors with different levels](https://stackoverflow.com/questions/30468412/dplyr-join-warning-joining-factors-with-different-levels/30468468)
  - [A data.table and dplyr tour](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/)
+#### write function with dplyr, (dataframe, columns is parameter)
+- [Programming with dplyr](https://cran.r-project.org/web/packages/dplyr/vignettes/programming.html)
