@@ -59,6 +59,9 @@ Linkedin learning also offers many courses.
 #### write function with dplyr, (dataframe, columns is parameter)
 - [Programming with dplyr](https://cran.r-project.org/web/packages/dplyr/vignettes/programming.html)
 
+#### programming-with data.table
+- [programming-with-data-table](https://www.r-bloggers.com/2020/01/programming-with-data-table/)
+
 #### unique vs duplicated 
 - [unique vs duplicated](https://www.r-bloggers.com/2016/10/difference-between-unique-and-duplicated/)
 
