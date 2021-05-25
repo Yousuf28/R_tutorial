@@ -58,3 +58,9 @@ Linkedin learning also offers many courses.
  - [A data.table and dplyr tour](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/)
 #### write function with dplyr, (dataframe, columns is parameter)
 - [Programming with dplyr](https://cran.r-project.org/web/packages/dplyr/vignettes/programming.html)
+
+#### unique vs duplicated 
+- [unique vs duplicated](https://www.r-bloggers.com/2016/10/difference-between-unique-and-duplicated/)
+
+#### sort vs order
+ -[sort vs order vs rank](https://statisticsglobe.com/sort-order-rank-r-function-example)
