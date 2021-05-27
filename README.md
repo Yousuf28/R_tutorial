@@ -66,4 +66,7 @@ Linkedin learning also offers many courses.
 - [unique vs duplicated](https://www.r-bloggers.com/2016/10/difference-between-unique-and-duplicated/)
 
 #### sort vs order
- -[sort vs order vs rank](https://statisticsglobe.com/sort-order-rank-r-function-example)
+- [sort vs order vs rank](https://statisticsglobe.com/sort-order-rank-r-function-example)
+
+#### NA, NaN, NULL
+- [NA VS NaN, NULL](http://rstudio-pubs-static.s3.amazonaws.com/261838_71b13475011340ab94e9c51d8e462080.html)
