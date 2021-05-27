@@ -70,3 +70,7 @@ Linkedin learning also offers many courses.
 
 #### NA, NaN, NULL
 - [NA VS NaN, NULL](http://rstudio-pubs-static.s3.amazonaws.com/261838_71b13475011340ab94e9c51d8e462080.html)
+
+#### lapply , sapply, and apply etc
+
+- [apply sapply lapply when to use](https://stackoverflow.com/questions/3505701/grouping-functions-tapply-by-aggregate-and-the-apply-family)
