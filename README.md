@@ -59,11 +59,26 @@ Linkedin learning also offers many courses.
 #### write function with dplyr, (dataframe, columns is parameter)
 - [Programming with dplyr](https://cran.r-project.org/web/packages/dplyr/vignettes/programming.html)
 
+
+#### data.table
+
+- [data.table tutorial](https://rdatatable.gitlab.io/data.table/)
+
 #### programming-with data.table
 - [programming-with-data-table](https://www.r-bloggers.com/2020/01/programming-with-data-table/)
 
+#### R data types
+
+- [from book](https://adv-r.hadley.nz/vectors-chap.html)
+- [typeof vs class](https://stackoverflow.com/questions/35445112/what-is-the-difference-between-mode-and-class-in-r)
+
+
 #### unique vs duplicated 
 - [unique vs duplicated](https://www.r-bloggers.com/2016/10/difference-between-unique-and-duplicated/)
+
+#### match vs %in%
+
+- [match vs %in%](https://www.r-bloggers.com/2011/11/match-vs-in/)
 
 #### sort vs order
 - [sort vs order vs rank](https://statisticsglobe.com/sort-order-rank-r-function-example)
