@@ -94,3 +94,8 @@ Linkedin learning also offers many courses.
 #### lapply , sapply, and apply etc
 
 - [apply sapply lapply when to use](https://stackoverflow.com/questions/3505701/grouping-functions-tapply-by-aggregate-and-the-apply-family)
+
+#### names vs colnames vs data.table.setnames
+
+- [names vs colnames](https://stackoverflow.com/questions/24799153/what-is-the-difference-between-names-and-colnames)
+- [rownames](https://stackoverflow.com/questions/2281353/row-names-column-names-in-r)
