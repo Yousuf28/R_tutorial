@@ -31,6 +31,7 @@ Linkedin learning also offers many courses.
 
 #### More Books
 - [Modern R](https://b-rodrigues.github.io/modern_R/)
+- [The R Book - Michael Crawley](https://www.cs.upc.edu/~robert/teaching/estadistica/TheRBook.pdf)
 
 #### ggplot tutorial
 
