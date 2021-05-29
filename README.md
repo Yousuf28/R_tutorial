@@ -64,6 +64,10 @@ Linkedin learning also offers many courses.
 
 - [data.table tutorial](https://rdatatable.gitlab.io/data.table/)
 
+#### data.table and dplyr tour
+
+- [A data.table and dplyr tour](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/)
+
 #### programming-with data.table
 - [programming-with-data-table](https://www.r-bloggers.com/2020/01/programming-with-data-table/)
 
