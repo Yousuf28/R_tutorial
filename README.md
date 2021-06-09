@@ -1,6 +1,7 @@
 # R_tutorial
 
 - [R-manual](https://stat.ethz.ch/R-manual/R-devel/doc/html/index.html)
+- [R-manual](https://cran.r-project.org/manuals.html)
 
 ### R basic materials
 
