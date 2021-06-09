@@ -103,3 +103,13 @@ Linkedin learning also offers many courses.
 
 ####  enquo + !! vs substitute + eval
 - [Why is enquo + !! preferable to substitute + eval](https://stackoverflow.com/questions/49700912/why-is-enquo-preferable-to-substitute-eval)
+
+
+### Plot
+
+#### R base plot
+- [Data visualization with base R](https://www.r-graph-gallery.com/base-R.html)
+- [R Base Graphics: An Idiot's Guide](https://rstudio-pubs-static.s3.amazonaws.com/7953_4e3efd5b9415444ca065b1167862c349.html)
+- [Base R Plotting Basics](https://bstaton1.github.io/au-r-workshop/ch2.html)
+- [The Base Plotting System](https://bookdown.org/rdpeng/exdata/the-base-plotting-system-1.html)
+
