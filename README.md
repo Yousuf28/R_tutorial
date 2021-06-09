@@ -1,5 +1,7 @@
 # R_tutorial
 
+- [R-manual](https://stat.ethz.ch/R-manual/R-devel/doc/html/index.html)
+
 ### R basic materials
 
  Buy Udemy course only when the price between $10 to $15. Udemy changes price a lot.  
