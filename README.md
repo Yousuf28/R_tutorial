@@ -99,3 +99,7 @@ Linkedin learning also offers many courses.
 
 - [names vs colnames](https://stackoverflow.com/questions/24799153/what-is-the-difference-between-names-and-colnames)
 - [rownames](https://stackoverflow.com/questions/2281353/row-names-column-names-in-r)
+
+
+####  enquo + !! vs substitute + eval
+- [Why is enquo + !! preferable to substitute + eval](https://stackoverflow.com/questions/49700912/why-is-enquo-preferable-to-substitute-eval)
