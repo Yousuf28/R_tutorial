@@ -118,6 +118,8 @@ Linkedin learning also offers many courses.
 - [The Base Plotting System](https://bookdown.org/rdpeng/exdata/the-base-plotting-system-1.html)
 
 #### Plot in ggplot2
+- [shiny app for generating plot with ggplot2](https://cardiomoon.shinyapps.io/ggplot2new/)
+- [R package esquisse for generating plot with ggplot2](https://github.com/dreamRs/esquisse)
 - [10 Tips to Customize Text Color, Font, Size in ggplot2 with element_text()](https://cmdlinetips.com/2021/05/tips-to-customize-text-color-font-size-in-ggplot2-with-element_text/)
 - [15 Tips to Customize lines in ggplot2 with element_line()](https://cmdlinetips.com/2021/05/tips-to-customize-lines-in-ggplot2-with-element_line/)
 - [7 Tips to customize rectangle elements in ggplot2 element_rect()](https://cmdlinetips.com/2021/06/7-tips-to-customize-rectangle-elements-in-ggplot2-element_rect/)
