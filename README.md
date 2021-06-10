@@ -117,3 +117,6 @@ Linkedin learning also offers many courses.
 - [Base R Plotting Basics](https://bstaton1.github.io/au-r-workshop/ch2.html)
 - [The Base Plotting System](https://bookdown.org/rdpeng/exdata/the-base-plotting-system-1.html)
 
+#### Plot in ggplot2
+- [10 Tips to Customize Text Color, Font, Size in ggplot2 with element_text()](https://cmdlinetips.com/2021/05/tips-to-customize-text-color-font-size-in-ggplot2-with-element_text/)
+- [15 Tips to Customize lines in ggplot2 with element_line()](https://cmdlinetips.com/2021/05/tips-to-customize-lines-in-ggplot2-with-element_line/)
