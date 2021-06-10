@@ -121,3 +121,4 @@ Linkedin learning also offers many courses.
 - [10 Tips to Customize Text Color, Font, Size in ggplot2 with element_text()](https://cmdlinetips.com/2021/05/tips-to-customize-text-color-font-size-in-ggplot2-with-element_text/)
 - [15 Tips to Customize lines in ggplot2 with element_line()](https://cmdlinetips.com/2021/05/tips-to-customize-lines-in-ggplot2-with-element_line/)
 - [7 Tips to customize rectangle elements in ggplot2 element_rect()](https://cmdlinetips.com/2021/06/7-tips-to-customize-rectangle-elements-in-ggplot2-element_rect/)
+- [How to Write Functions to Make Plots with ggplot2 in R](https://cmdlinetips.com/2021/05/functions-to-make-plots-with-ggplot2-in-r/)
