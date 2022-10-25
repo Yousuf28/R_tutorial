@@ -34,9 +34,13 @@ Linkedin learning also offers many courses.
 
 #### More Books
 - [Big Book of R](https://www.bigbookofr.com/index.html)
+- [Hands-On Programming with R](https://rstudio-education.github.io/hopr/)
+- [An Introduction to R](https://intro2r.com/)
 - [Modern R](https://b-rodrigues.github.io/modern_R/)
 - [The R Book - Michael Crawley](https://www.cs.upc.edu/~robert/teaching/estadistica/TheRBook.pdf)
 - [R Cookbook](https://rc2e.com/)
+- [Efficient R programming](https://csgillespie.github.io/efficientR/)
+- [Best Coding Practices for R](https://bookdown.org/content/d1e53ac9-28ce-472f-bc2c-f499f18264a3/)
 - [THE ART OF R PROGRAMMING](https://diytranscriptomics.com/Reading/files/The%20Art%20of%20R%20Programming.pdf)
 - [The R Inferno](https://www.burns-stat.com/pages/Tutor/R_inferno.pdf)
 
@@ -72,6 +76,8 @@ Linkedin learning also offers many courses.
 #### data.table
 
 - [data.table tutorial](https://rdatatable.gitlab.io/data.table/)
+- [data.table in R – The Complete Beginners Guide](https://www.machinelearningplus.com/data-manipulation/datatable-in-r-complete-guide/)
+- [101 R data.table Exercises](https://www.machinelearningplus.com/data-manipulation/101-r-data-table-exercises/)
 
 #### data.table and dplyr tour
 
