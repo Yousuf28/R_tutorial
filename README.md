@@ -33,9 +33,13 @@ Linkedin learning also offers many courses.
 - [Mastering Shiny](https://mastering-shiny.org)
 
 #### More Books
+- [Big Book of R](https://www.bigbookofr.com/index.html)
 - [Modern R](https://b-rodrigues.github.io/modern_R/)
 - [The R Book - Michael Crawley](https://www.cs.upc.edu/~robert/teaching/estadistica/TheRBook.pdf)
+- [R Cookbook](https://rc2e.com/)
 - [THE ART OF R PROGRAMMING](https://diytranscriptomics.com/Reading/files/The%20Art%20of%20R%20Programming.pdf)
+- [The R Inferno](https://www.burns-stat.com/pages/Tutor/R_inferno.pdf)
+
 
 #### ggplot tutorial
 
