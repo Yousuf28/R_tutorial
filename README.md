@@ -65,6 +65,9 @@ Linkedin learning also offers many courses.
 - [regex101](https://regex101.com/)
 - [regexr](https://regexr.com/)
 
+##### paste vs paste0
+ - [paste in R](https://www.digitalocean.com/community/tutorials/paste-in-r)
+
 
 ##### RStudio shortcut
 
