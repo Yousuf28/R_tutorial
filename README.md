@@ -55,6 +55,17 @@ Linkedin learning also offers many courses.
 
 # Topics
 
+##### grep
+- [regular expression](https://blog.rsquaredacademy.com/regular-expression-in-r/)
+- [R_blog_same as above](https://www.r-bloggers.com/2019/05/demystifying-regular-expressions-in-r/)
+- [datacamp](https://www.datacamp.com/tutorial/regex-r-regular-expressions-guide)
+- [regular expression in R](https://rstudio-pubs-static.s3.amazonaws.com/74603_76cd14d5983f47408fdf0b323550b846.html)
+- [basic](https://www.regular-expressions.info/quickstart.html)
+
+- [regex101](https://regex101.com/)
+- [regexr](https://regexr.com/)
+
+
 ##### RStudio shortcut
 
 - [r-studio-shortcuts-and-tips](https://appsilon.com/r-studio-shortcuts-and-tips-2/)
