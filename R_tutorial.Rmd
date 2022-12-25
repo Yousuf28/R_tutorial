@@ -1,5 +1,25 @@
 ---
-title: "R Notebook"
+title: "R basics: I want to know"
 output: html_notebook
 ---
 
+```{r}
+
+```
+
+#### difference between __cat__ and __print__
+
+ - [cat vs print_ see second answer](https://stackoverflow.com/questions/31843662/what-is-the-difference-between-cat-and-print)
+ 
+```{r}
+f02 <- function(x, y) {
+  # A comment
+  x + y
+}
+```
+ 
+```{r}
+attributes(f02)
+```
+ 
+ 
