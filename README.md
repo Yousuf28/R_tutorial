@@ -1,5 +1,8 @@
 # R_tutorial
 
+- [R-manual](https://stat.ethz.ch/R-manual/R-devel/doc/html/index.html)
+- [R-manual](https://cran.r-project.org/manuals.html)
+
 ### R basic materials
 
  Buy Udemy course only when the price between $10 to $15. Udemy changes price a lot.  
@@ -30,7 +33,17 @@ Linkedin learning also offers many courses.
 - [Mastering Shiny](https://mastering-shiny.org)
 
 #### More Books
+- [Big Book of R](https://www.bigbookofr.com/index.html)
+- [Hands-On Programming with R](https://rstudio-education.github.io/hopr/)
+- [An Introduction to R](https://intro2r.com/)
 - [Modern R](https://b-rodrigues.github.io/modern_R/)
+- [The R Book - Michael Crawley](https://www.cs.upc.edu/~robert/teaching/estadistica/TheRBook.pdf)
+- [R Cookbook](https://rc2e.com/)
+- [Efficient R programming](https://csgillespie.github.io/efficientR/)
+- [Best Coding Practices for R](https://bookdown.org/content/d1e53ac9-28ce-472f-bc2c-f499f18264a3/)
+- [THE ART OF R PROGRAMMING](https://diytranscriptomics.com/Reading/files/The%20Art%20of%20R%20Programming.pdf)
+- [The R Inferno](https://www.burns-stat.com/pages/Tutor/R_inferno.pdf)
+
 
 #### ggplot tutorial
 
@@ -41,6 +54,23 @@ Linkedin learning also offers many courses.
 
 
 # Topics
+
+##### grep
+- [regular expression](https://blog.rsquaredacademy.com/regular-expression-in-r/)
+- [R_blog_same as above](https://www.r-bloggers.com/2019/05/demystifying-regular-expressions-in-r/)
+- [datacamp](https://www.datacamp.com/tutorial/regex-r-regular-expressions-guide)
+- [regular expression in R](https://rstudio-pubs-static.s3.amazonaws.com/74603_76cd14d5983f47408fdf0b323550b846.html)
+- [basic](https://www.regular-expressions.info/quickstart.html)
+
+- [regex101](https://regex101.com/)
+- [regexr](https://regexr.com/)
+
+##### date time
+- [data time](https://blog.rsquaredacademy.com/handling-date-and-time-in-r/)
+
+##### paste vs paste0
+ - [paste in R](https://www.digitalocean.com/community/tutorials/paste-in-r)
+
 
 ##### RStudio shortcut
 
@@ -58,3 +88,68 @@ Linkedin learning also offers many courses.
  - [A data.table and dplyr tour](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/)
 #### write function with dplyr, (dataframe, columns is parameter)
 - [Programming with dplyr](https://cran.r-project.org/web/packages/dplyr/vignettes/programming.html)
+
+
+#### data.table
+
+- [data.table tutorial](https://rdatatable.gitlab.io/data.table/)
+- [data.table in R – The Complete Beginners Guide](https://www.machinelearningplus.com/data-manipulation/datatable-in-r-complete-guide/)
+- [101 R data.table Exercises](https://www.machinelearningplus.com/data-manipulation/101-r-data-table-exercises/)
+
+#### data.table and dplyr tour
+
+- [A data.table and dplyr tour](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/)
+
+#### programming-with data.table
+- [programming-with-data-table](https://www.r-bloggers.com/2020/01/programming-with-data-table/)
+
+#### R data types
+
+- [from book](https://adv-r.hadley.nz/vectors-chap.html)
+- [typeof vs class](https://stackoverflow.com/questions/35445112/what-is-the-difference-between-mode-and-class-in-r)
+
+
+#### unique vs duplicated 
+- [unique vs duplicated](https://www.r-bloggers.com/2016/10/difference-between-unique-and-duplicated/)
+
+#### match vs %in%
+
+- [match vs %in%](https://www.r-bloggers.com/2011/11/match-vs-in/)
+
+#### sort vs order
+- [sort vs order vs rank](https://statisticsglobe.com/sort-order-rank-r-function-example)
+
+#### NA, NaN, NULL
+- [NA VS NaN, NULL](http://rstudio-pubs-static.s3.amazonaws.com/261838_71b13475011340ab94e9c51d8e462080.html)
+
+#### lapply , sapply, and apply etc
+
+- [apply sapply lapply when to use](https://stackoverflow.com/questions/3505701/grouping-functions-tapply-by-aggregate-and-the-apply-family)
+
+#### names vs colnames vs data.table.setnames
+
+- [names vs colnames](https://stackoverflow.com/questions/24799153/what-is-the-difference-between-names-and-colnames)
+- [rownames](https://stackoverflow.com/questions/2281353/row-names-column-names-in-r)
+#### cat vs print
+- [cat vs print](https://stackoverflow.com/questions/36699272/why-is-message-a-better-choice-than-print-in-r-for-writing-a-package)
+
+####  enquo + !! vs substitute + eval
+- [Why is enquo + !! preferable to substitute + eval](https://stackoverflow.com/questions/49700912/why-is-enquo-preferable-to-substitute-eval)
+
+
+### Plot
+
+#### R base plot
+- [Plots in base R_best_one](https://r-charts.com)
+- [Data visualization with base R](https://www.r-graph-gallery.com/base-R.html)
+- [R Base Graphics: An Idiot's Guide](https://rstudio-pubs-static.s3.amazonaws.com/7953_4e3efd5b9415444ca065b1167862c349.html)
+- [Base R Plotting Basics](https://bstaton1.github.io/au-r-workshop/ch2.html)
+- [The Base Plotting System](https://bookdown.org/rdpeng/exdata/the-base-plotting-system-1.html)
+
+#### Plot in ggplot2
+- [shiny app for generating plot with ggplot2](https://cardiomoon.shinyapps.io/ggplot2new/)
+- [R package esquisse for generating plot with ggplot2](https://github.com/dreamRs/esquisse)
+- [10 Tips to Customize Text Color, Font, Size in ggplot2 with element_text()](https://cmdlinetips.com/2021/05/tips-to-customize-text-color-font-size-in-ggplot2-with-element_text/)
+- [15 Tips to Customize lines in ggplot2 with element_line()](https://cmdlinetips.com/2021/05/tips-to-customize-lines-in-ggplot2-with-element_line/)
+- [7 Tips to customize rectangle elements in ggplot2 element_rect()](https://cmdlinetips.com/2021/06/7-tips-to-customize-rectangle-elements-in-ggplot2-element_rect/)
+- [How to Write Functions to Make Plots with ggplot2 in R](https://cmdlinetips.com/2021/05/functions-to-make-plots-with-ggplot2-in-r/)
