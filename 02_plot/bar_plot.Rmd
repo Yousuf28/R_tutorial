@@ -1,0 +1,93 @@
+---
+title: "Bar Plot"
+output: html_notebook
+---
+
+## Numeric
+- histogram (1)
+- scatter plot (2)
+## discrete numeric variable (numeric var divided into category)
+- barplot
+## category/factor
+- Barplot (1)
+
+## x=Category/factor and  y=numberic
+- boxplot
+
+base R
+
+- [Barplot](https://r-coder.com/barplot-r/)
+
+ggplot2
+- [Barplot](http://www.sthda.com/english/wiki/ggplot2-barplots-quick-start-guide-r-software-and-data-visualization)
+
+```{r}
+library(ggplot2)
+```
+
+```{r}
+df <- ggplot2::mpg
+```
+
+```{r}
+head(df)
+```
+
+
+```{r}
+df$class <- factor(df$class)
+```
+
+```{r}
+barplot(table(df$class))
+```
+
+```{r}
+scales::hue_pal()(7)
+```
+
+```{r}
+ col_pal <- c("#F8766D", "#C49A00", "#53B400",
+              "#00C094", "#00B6EB", "#A58AFF","#FB61D7")
+```
+
+
+
+```{r}
+barplot(table(df$class), main = "barplot in base R", col = c(1:7))
+```
+
+- [las parameter](https://statisticsglobe.com/rotate-axis-labels-in-r)
+- [the-options-of-barplot](https://www.r-graph-gallery.com/209-the-options-of-barplot.html)
+
+```{r}
+par(lty=0, mar=c(5,6,5,8), xpd=TRUE) # remove border black colro in bar
+barplot(table(df$class), main = "barplot in base R",
+        col = col_pal,
+        horiz = TRUE, # plot horizontal
+        las=1, # change the axis to horizontal
+        space = c(.05),
+        width = rep(5,7)) 
+legend("right", inset = c(-0.3,0), legend = levels(df$class), col = col_pal, pch=16)
+
+```
+```{r}
+par( mar=c(5,6,5,8), xpd=TRUE) #
+barplot(table(df$class), main = "barplot in base R",
+        col = col_pal,
+        horiz = TRUE, # plot horizontal
+        las=1, # change the axis to horizontal
+        space = c(.05),
+        width = rep(5,7)) 
+legend("right", inset = c(-0.3,0), legend = levels(df$class), col = col_pal, pch=16)
+
+```
+
+
+
+```{r}
+ggplot2::ggplot(data = df)+
+    geom_bar(aes(class, fill=class))+
+    coord_flip()
+```
+

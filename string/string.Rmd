@@ -1,0 +1,441 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+a <- "abc" 
+a
+```
+
+
+```{r}
+b <- "123"
+b
+```
+
+
+```{r}
+is.character(a)
+```
+
+
+
+```{r}
+as.numeric(a)
+```
+
+
+```{r}
+as.numeric(b)
+```
+
+
+```{r}
+pets <- c("cat","dog","gerbil","terrapin")
+pets
+```
+
+
+
+```{r}
+length(pets)
+```
+
+
+```{r}
+nchar(pets)
+```
+
+
+```{r}
+class(pets)
+```
+
+
+
+```{r}
+attributes(pets)
+```
+
+
+```{r}
+typeof(pets)
+```
+
+
+```{r}
+noquote(letters)
+```
+
+
+
+```{r}
+noquote(pets)
+```
+
+
+```{r}
+c(a,b)
+```
+
+
+```{r}
+d <- c(a,b,"new")
+d
+```
+
+
+
+```{r}
+e <- paste(d,"a longer phrase containing blanks")
+e
+```
+
+
+```{r}
+str(e)
+```
+
+
+```{r}
+attributes(e)
+```
+
+
+
+```{r}
+phrase <- "the quick brown fox jumps over the lazy dog"
+```
+
+
+```{r}
+q <- character(20)
+q
+```
+
+
+```{r}
+for (i in 1:20)
+    q[i] <- substr(phrase,1,i)
+```
+
+
+
+```{r}
+q
+```
+
+
+```{r}
+
+```
+
+#### substr
+##### substring
+
+substr(x, start, stop)
+
+replace the value
+substr(x, start, stop) <- value
+
+substring(text, first, last = 1000000L)
+
+
+```{r}
+# "A1-B2-C3-D4-E5-F6-G7"
+abc <- "ABCDEFG"
+substr(abc, 2,5)
+```
+
+```{r}
+substring(abc, 3)
+```
+
+
+
+```{r}
+substr(abc, 1,3) <- "xyz"
+```
+
+
+```{r}
+abc
+```
+#### nchar
+
+```{r}
+nchar(abc)
+```
+
+
+
+```{r}
+nchar(pets)
+```
+
+
+```{r}
+nchar(phrase)
+```
+#### strsplit
+
+
+
+```{r}
+phrase <- "the quick brown fox jumps over the lazy dog"
+```
+
+
+```{r}
+# strsplit(x, split, fixed = FALSE, perl = FALSE, useBytes = FALSE)
+strsplit(phrase)
+```
+
+```{r}
+strsplit(phrase,split = character(0))
+```
+split = character(0) or split = NULL means ""
+
+
+```{r}
+kk <- strsplit(phrase,split = character(0))
+```
+
+
+```{r}
+str(kk)
+```
+
+
+
+```{r}
+unlist(kk)
+```
+
+
+```{r}
+strsplit(phrase,split = NULL)
+```
+
+
+```{r}
+table(strsplit(phrase,split = character(0)))
+```
+
+
+```{r}
+strsplit(phrase,split = " ")
+```
+
+```{r}
+strsplit(phrase,split = " ")
+```
+```{r}
+unlist(strsplit(phrase, split = " "))[4]
+```
+
+```{r}
+strsplit(phrase, split = " ")[[1]]
+```
+
+```{r}
+strsplit(phrase, split = " ")[[1]][4]
+```
+
+```{r}
+lapply(strsplit(phrase, " "), nchar)
+```
+
+```{r}
+table(lapply(strsplit(phrase, " "), nchar))
+```
+```{r}
+phrase
+```
+
+```{r}
+sapply(lapply(strsplit(phrase, NULL), rev), paste, collapse="")
+```
+
+```{r}
+sapply(lapply(strsplit(phrase, NULL), rev), paste, collapse="")
+```
+
+```{r}
+first <- c(5,8,3,5,3,6,4,4,2,8,8,8,4,4,6) 
+second <- c(8,6,4,2)
+```
+
+```{r}
+match(first,second)
+```
+
+```{r}
+second <- c(8,6,4,2)
+first <- c(5,8,3,5,3,6,4,4,2,8,8,8,4,4,6) 
+
+match(second,first)
+```
+
+```{r}
+which(second %in% first)
+```
+```{r}
+
+which(first %in% second)
+```
+
+```{r}
+second <- c(8,6,4,2)
+first <- c(5,8,3,5,3,6,4,4,2,8,8,8,4,4,6) 
+intersect(first,second)
+```
+
+```{r}
+second <- c(8,6,4,2,4,2)
+first <- c(5,8,3,5,3,6,4,4,2,8,8,8,4,4,6) 
+intersect(second,first)
+```
+
+```{r}
+first <- c(5,8,3,5,3,6,4,4,2,8,8,8,4,4,6) 
+second <- c(8,6,4,2,8,8,11)
+match(first,second)
+```
+```{r}
+second[match(first,second)]
+```
+
+```{r}
+# g/re/p (globally search for a regular expression and print matching lines
+```
+
+```{r}
+text <- c("arm", "leg", "head", "foot", "hand", "hindleg", "elbow")
+```
+
+```{r}
+grep("o",text)
+```
+
+```{r}
+text[grep("o", text)]
+```
+```{r}
+grepl("o",text)
+```
+
+```{r}
+text[grepl("o", text)]
+```
+
+
+```{r}
+sub("o","O",text)
+```
+
+```{r}
+text
+```
+
+```{r}
+gsub("o","O",text)
+```
+
+```{r}
+gsub("^.","O",text)
+```
+
+```{r}
+gsub(".$","O",text)
+```
+
+```{r}
+
+```
+
+```{r}
+regexpr("o",text)
+```
+
+```{r}
+gregexpr("o", text)
+```
+
+```{r}
+library(stringr)
+```
+
+```{r}
+fruit <- c("apple", "banana", "pear", "pineapple")
+
+# base
+grepl(pattern = "a", x = fruit)
+#> [1] TRUE TRUE TRUE TRUE
+
+```
+
+```{r}
+
+# stringr
+str_detect(fruit, pattern = "a")
+#> [1] TRUE TRUE TRUE TRUE
+```
+
+```{r}
+# base
+grep(pattern = "a", x = fruit)
+#> [1] 1 2 3 4
+
+
+```
+
+```{r}
+# stringr
+str_which(fruit, pattern = "a")
+#> [1] 1 2 3 4
+```
+
+```{r}
+# base 
+loc <- gregexpr(pattern = "a", text = fruit, fixed = TRUE)
+sapply(loc, function(x) length(attr(x, "match.length")))
+#> [1] 1 3 1 1
+
+
+```
+
+```{r}
+freq <- as.vector(unlist (lapply(gregexpr("o",fruit),length)))
+```
+
+
+```{r}
+# stringr
+str_count(fruit, pattern = "a")
+#> [1] 1 3 1 1
+```
+
+```{r}
+# base
+x <- "ABCDEF"
+substr(x, 1, 3) <- "x"
+x
+#> [1] "xBCDEF"
+```
+
+```{r}
+# stringr
+x <- "ABCDEF"
+str_sub(x, 1, 3) <- "x"
+x
+#> [1] "xDEF"
+```
+
+```{r}
+#base
+take <- substr("ABCDEF", 4,6)
+paste0("x", take)
+```
+

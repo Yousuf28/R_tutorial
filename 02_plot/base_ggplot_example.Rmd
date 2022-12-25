@@ -1,0 +1,119 @@
+---
+title: "Histogram"
+output: html_notebook
+
+---
+
+## Numeric
+- histogram (1)
+- scatter plot (2)
+## discrete numeric variable (numeric var divided into category)
+- barplot
+## category/factor
+- Barplot (1)
+
+## x=Category/factor and  y=numberic
+- boxplot
+
+manufacturer: chr [1:234] "audi" "audi" "audi" "audi" ...
+ $ model       : chr [1:234] "a4" "a4" "a4" "a4" ...
+ $ displ       : num [1:234] 1.8 1.8 2 2 2.8 2.8 3.1 1.8 1.8 2 ...
+ $ year        : int [1:234] 1999 1999 2008 2008 1999 1999 2008 1999 1999 2008 ...
+ $ cyl         : int [1:234] 4 4 4 4 6 6 6 4 4 4 ...
+ $ trans       : chr [1:234] "auto(l5)" "manual(m5)" "manual(m6)" "auto(av)" ...
+ $ drv         : chr [1:234] "f" "f" "f" "f" ...
+ $ cty         : int [1:234] 18 21 20 21 16 18 18 18 16 20 ...
+ $ hwy         : int [1:234] 29 29 31 30 26 26 27 26 25 28 ...
+ $ fl          : chr [1:234] "p" "p" "p" "p" ...
+ $ class       : Factor w/ 7 levels "2seater","compact",..
+
+```{r}
+library(ggplot2)
+```
+
+dataset from ggplot2 library
+```{r}
+df <- ggplot2::mpg
+```
+
+```{r}
+head(df)
+```
+
+```{r}
+df$class <- factor(df$class)
+```
+
+#### histogram 
+- [base histogram](https://r-coder.com/histogram-r/)
+base R histogram
+
+```{r}
+graphics::hist(df$hwy, breaks = "sturges", col = "#00BFC4",
+xlab = "Highway miles per gallon",
+main = "Histogram in base R")
+```
+breaks can be set to number 
+
+```{r}
+graphics::hist(df$hwy, breaks = 27, col = "#00BFC4",
+xlab = "Highway miles per gallon",
+main = "Histogram in base R")
+```
+
+```{r}
+graphics::hist(df$displ, breaks = "sturges", col = "#00BFC4",
+      xlab = "Engine Displacement in Liter",
+      main = "Histogram in base R")
+```
+
+2 variables in one hist plot
+```{r}
+graphics::hist(df$hwy, breaks = "sturges", col = "#00BFC4",
+xlab = "Highway miles per gallon",
+main = "Histogram in base R")
+hist(df$cty, add = TRUE, col = "#F8766D")
+```
+
+```{r}
+histDenNorm <- function(x, main = "") {
+   hist(x, prob = TRUE, main = main) # Histogram
+   lines(density(x), col = "blue", lwd = 2) # Density 
+   x2 <- seq(min(x), max(x), length = 40)
+   f <- dnorm(x2, mean(x), sd(x))
+   lines(x2, f, col = "red", lwd = 2) # Normal
+   legend("topright", c("Histogram", "Density", "Normal"), box.lty = 0,
+          lty = 1, col = c("black", "blue", "red"), lwd = c(1, 2, 2))
+}
+```
+
+```{r}
+histDenNorm(df$hwy)
+```
+
+ggplot histogram
+
+```{r}
+ggplot(data = df, aes(x = hwy)) +
+geom_histogram(bins = 7, fill = "#00BFC4", color = "#ffffff")
+```
+
+```{r}
+nbreaks <- pretty(range(df$hwy), n = nclass.Sturges(df$hwy),
+                  min.n = 1)
+ggplot(data = df, aes(x = hwy)) +
+geom_histogram(breaks = nbreaks, fill = "#00BFC4", color = "#000000")
+```
+
+with geom_bar and scale_x_binned
+```{r}
+ggplot(data = df, aes(x = hwy)) +
+geom_bar(fill = "#00BFC4", color = "#ffffff") +
+scale_x_binned()
+```
+
+```{r}
+ggplot(diamonds, aes(price, fill = cut)) +
+  geom_histogram(binwidth = 500)
+```
+

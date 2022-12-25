@@ -1,0 +1,179 @@
+---
+title: "Scatter Plot"
+output: html_notebook
+---
+
+## Numeric
+- histogram (1)
+- scatter plot (2)
+## discrete numeric variable (numeric var divided into category)
+- barplot
+## category/factor
+- Barplot (1)
+
+## x=Category/factor and  y=numberic
+- boxplot
+
+```{r}
+library(ggplot2)
+```
+
+```{r}
+df <- ggplot2::mpg
+```
+
+```{r}
+head(df)
+```
+
+#### Scatter Plot in base R
+
+```{r}
+plot(df$cty, df$hwy, col="#00BFC4", pch=16)
+```
+
+```{r}
+fit <- lm(hwy ~ cty, data=df)
+plot(df$cty, df$hwy, col="#00BFC4", pch=16)
+abline(fit, lty="dashed" , col="red")
+```
+
+```{r}
+df$class <- factor(df$class)
+```
+
+
+
+```{r}
+plot(df$cty, df$hwy, col= df$class, pch=16)
+legend(x=30,y=40, legend = levels(df$class), col = c(1:7), pch=16)
+```
+we can take color from ggolot2
+
+```{r}
+library(scales)
+show_col(hue_pal()(7))
+```
+
+```{r}
+color <- scales::hue_pal()(7)
+plot(df$cty, df$hwy, col= df$class, pch=16)
+legend(x=30,y=42, legend = levels(df$class), col = color, pch=16)
+```
+```{r}
+par(bg="gray")
+color <- c("#F8766D", "#C49A00", "#53B400","#00C094","#00B6EB", "#A58AFF", "#FB61D7")
+plot(df$cty, df$hwy, col= df$class, pch=16)
+legend("bottomright", legend = levels(df$class), col = color, pch=16)
+```
+```{r}
+par(bg="gray")
+plot(0, 0, type="n", ann=FALSE, axes=FALSE)
+u <- par("usr") # The coordinates of the plot area
+rect(u[1], u[3], u[2], u[4], col="white", border=NA)
+
+par(new=TRUE)
+
+
+color <- c("#F8766D", "#C49A00", "#53B400","#00C094","#00B6EB", "#A58AFF", "#FB61D7")
+plot(df$cty, df$hwy, col= df$class, pch=16)
+legend("bottomright", legend = levels(df$class), col = color, pch=16)
+```
+
+
+
+```{r}
+# Add extra space to right of plot area; change clipping to figure
+par(mar=c(5.1, 4.1, 4.1, 8.1), xpd=TRUE) 
+#color <- scales::hue_pal()(7)
+color <- scales::brewer_pal()(7)
+plot(df$cty, df$hwy, col= color[df$class], pch=16)
+legend("right",inset = c(-0.3,0), legend = levels(df$class), col = color, pch=16)
+```
+if we don't want to use __scales__ library then we can get hex number by following way
+
+```{r}
+scales::hue_pal()(7)
+```
+
+
+
+```{r}
+# Add extra space to right of plot area; change clipping to figure
+par(mar=c(5.1, 4.1, 4.1, 8.1), xpd=TRUE) 
+color <- scales::hue_pal()(7)
+#color <- scales::brewer_pal()(7)
+plot(df$cty, df$hwy, col= color[df$class], pch=16)
+legend("right",inset = c(-0.3,0), legend = levels(df$class), col = color, pch=16)
+```
+
+
+#### ggplot
+
+```{r}
+ggplot(data = df, aes(x=cty, y=hwy))+
+    geom_point()
+```
+
+```{r}
+ggplot(data = df, aes(x=cty, y=hwy))+
+    geom_point()+
+    geom_smooth(method = "lm")
+```
+
+```{r}
+ggplot(data = df, aes(x=cty, y=hwy, color=class))+
+    geom_point()
+```
+
+####### extra
+
+```{r}
+par(mfrow = c(1,1), mar = c(5,5,4,1),font = 7,font.axis = 7,
+    fg = "azure4",  col.axis = "azure4", cex.axis = .75) 
+##Create the empty plot
+plot(NULL, ylim=c(0,2.5),xlim=c(0,7), 
+     xlab = "Petal Length", 
+     ylab = "Petal Width", 
+     font.lab = 7,
+     main = "Petal Width vs. Petal Length",
+     font.main = 7,
+     col.main = "black",)
+##Add the background color
+abline(v = 0:7, col = "aliceblue", lwd = 200)
+abline(v = 0:7, col = "white")
+abline(h=0:2.5, col = "white")
+```
+
+
+```{r}
+##global parameters
+par(mfrow = c(1,1), mar = c(5,5,4,1),font = 7,font.axis = 7,
+    fg = "azure4",  col.axis = "azure4", cex.axis = .75) 
+##Create the empty plot
+plot(NULL, ylim=c(0,2.5),xlim=c(0,7), 
+     xlab = "Petal Length", 
+     ylab = "Petal Width", 
+     font.lab = 7,
+     main = "Petal Width vs. Petal Length",
+     font.main = 7,
+     col.main = "black",)
+##Add the background color
+abline(v = 0:7, col = "aliceblue", lwd = 200)
+abline(v = 0:7, col = "white")
+abline(h=0:2.5, col = "white")
+
+##Add the data points
+points(iris$Petal.Length, iris$Petal.Width, 
+       pch = 20,
+       cex = 1.5,
+       col=ifelse(iris$Species == "setosa","coral1", 
+                  ifelse(iris$Species == "virginica","cyan4", 
+                         ifelse(iris$Species ==  "versicolor",
+                                "darkgoldenrod2", "grey"))))
+##legend
+legend("bottomright", c("setosa","virginica", "versicolor"),
+       col = c("coral1","cyan4", "darkgoldenrod2"), pch=20)
+
+```
+

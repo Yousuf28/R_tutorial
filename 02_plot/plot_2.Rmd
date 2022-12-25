@@ -1,0 +1,163 @@
+---
+title: "R Notebook"
+output: html_notebook
+
+---
+
+
+
+- [plot in R](https://r-coder.com/plot-r/)
+
+```{r}
+library(ggplot2)
+
+```
+
+```{r}
+df <- mpg
+```
+
+```{r}
+car <- mtcars
+```
+
+```{r}
+plot(df$displ, df$hwy,
+     main = "displ vs hwy", # main title 
+     xlab = "Displ", # x axis labels
+     ylab = "HWY") # y axis labels
+```
+
+```{r}
+# png("base.plot.png")
+plot(df$displ, df$hwy,
+     main = "displ vs hwy",
+     xlab = "Displ",
+     ylab = "HWY",
+     type = "p", # by default p, points, "l" for line, "b" for both
+     col='green', # by default black, color of points
+     pch=1,) #plotting character ie. symbol
+     # dev.off()
+```
+
+
+```{r}
+
+
+```
+
+```{r}
+plot(df$displ, df$hwy,
+     main = "displ vs hwy",
+     xlab = "Displ",
+     ylab = "HWY",
+     type = "p", 
+     col='green',
+     pch=2, #plotting character ie. symbol, default 1 circle, 2 is for triangle
+     cex=2.5, #character (or symbol) expansion, 
+     #A numerical value giving the amount by which plotting text
+     #and symbols should be magnified relative to the default
+     lwd=3) # line width of symbol/character, default 1.
+```
+
+```{r}
+plot(df$displ, df$hwy,
+     main = "displ vs hwy",
+     xlab = "Displ",
+     ylab = "HWY",
+     type = "p", 
+     col='green',
+     pch=2, 
+     cex=2.5, 
+     lwd=3,
+     cex.axis=5) #character expansion of axis value
+```
+
+```{r}
+plot(df$displ, df$hwy,
+     main = "displ vs hwy",
+     xlab = "Displ",
+     ylab = "HWY",
+     type = "p", 
+     col='green',
+     pch=2, 
+     cex=2.5, 
+     lwd=3,
+     cex.lab=3)# character expansion for axis labels
+```
+
+```{r}
+plot(df$displ, df$hwy,
+     main = "displ vs hwy",
+     sub = "this is sub title", 
+     xlab = "Displ",
+     ylab = "HWY",
+     type = "p", 
+     col='green',
+     pch=2, 
+     cex=2.5, 
+     lwd=3,
+     cex.main=3, # character expansion for main title
+     cex.sub=2)# character expansion cex for sub title
+```
+
+```{r}
+plot(df$displ, df$hwy,
+     main = "displ vs hwy",
+     sub = "this is sub title", 
+     xlab = "Displ",
+     ylab = "HWY",
+     font.main=3)# font style for main , 3 for italic
+# font.axis
+#font.sub
+#font.lab
+```
+
+```{r}
+plot(df$displ, df$hwy,
+     main = "displ vs hwy",
+     sub = "this is sub title", 
+     xlab = "Displ",
+     ylab = "HWY",
+     family='HersheySymbol') # for font family
+```
+
+   
+
+
+```{r}
+
+plot(df$displ, df$hwy,
+     main = "displ vs hwy",
+     sub = "this is sub title", 
+     xlab = "Displ",
+     ylab = "HWY",
+     type = "p",
+     col.axis="blue")# color for axis annotation
+ 
+```
+
+```{r}
+plot(df$displ, df$hwy,
+     main = "displ vs hwy",
+     sub = "this is sub title", 
+     xlab = "Displ",
+     ylab = "HWY",
+     type = "p",
+     col.lab="red")# color for x and y labels
+# col.main for color main title
+#col.sub for color sub title
+ 
+```
+
+```{r}
+
+par(bg='gray')
+plot(df$displ, df$hwy,
+     main = "displ vs hwy",
+     sub = "this is sub title", 
+     xlab = "Displ",
+     ylab = "HWY", 
+     fg='red') # color for foreground of plots
+```
+
