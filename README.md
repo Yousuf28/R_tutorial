@@ -136,7 +136,8 @@ Linkedin learning also offers many courses.
 ####  enquo + !! vs substitute + eval
 - [Why is enquo + !! preferable to substitute + eval](https://stackoverflow.com/questions/49700912/why-is-enquo-preferable-to-substitute-eval)
 
-
+## project 
+- [change library path](https://www.accelebrate.com/library/how-to-articles/r-rstudio-library)
 ### Plot
 
 #### R base plot
