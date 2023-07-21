@@ -43,7 +43,17 @@ Linkedin learning also offers many courses.
 - [Best Coding Practices for R](https://bookdown.org/content/d1e53ac9-28ce-472f-bc2c-f499f18264a3/)
 - [THE ART OF R PROGRAMMING](https://diytranscriptomics.com/Reading/files/The%20Art%20of%20R%20Programming.pdf)
 - [The R Inferno](https://www.burns-stat.com/pages/Tutor/R_inferno.pdf)
+#### Awesome R
 
+- [awesome-R](https://github.com/qinwf/awesome-R)
+- [awesome-r](https://github.com/uhub/awesome-r)
+
+#### package management
+- [Require](https://github.com/PredictiveEcology/Require)
+- [pak](https://github.com/r-lib/pak)
+- [miniCRAN](https://github.com/andrie/miniCRAN)
+- [groundhog](https://github.com/CredibilityLab/groundhog)
+- [rig](https://github.com/r-lib/rig)
 
 #### ggplot tutorial
 
