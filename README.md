@@ -146,8 +146,16 @@ Linkedin learning also offers many courses.
 ####  enquo + !! vs substitute + eval
 - [Why is enquo + !! preferable to substitute + eval](https://stackoverflow.com/questions/49700912/why-is-enquo-preferable-to-substitute-eval)
 
-## project 
+## project management
+
+- [renv](https://github.com/rstudio/renv)
+- [packrat](https://github.com/rstudio/packrat)
+- [pkgr](https://github.com/metrumresearchgroup/pkgr)
+- [Require](https://github.com/PredictiveEcology/Require)
+- [checkpoint](https://github.com/RevolutionAnalytics/checkpoint)
+- [pak](https://github.com/r-lib/pak)
 - [change library path](https://www.accelebrate.com/library/how-to-articles/r-rstudio-library)
+
 ## R functions   
 find all functions in a file and their package name  
 `NCmisc::list.functions.in.file()`
@@ -156,6 +164,7 @@ find package for a function
 returns a data.frame from RSiteSearch[r project search](https://search.r-project.org/)   
 `sos::findFn()`
 
+  
 ### Plot
 
 #### R base plot
