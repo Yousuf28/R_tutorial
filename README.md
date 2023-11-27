@@ -157,7 +157,7 @@ Linkedin learning also offers many courses.
 - [change library path](https://www.accelebrate.com/library/how-to-articles/r-rstudio-library)
 
 ## R functions   
-find all functions in a file and their package name  
+find all functions in a file and their package name(library need to be loaded)  
 `NCmisc::list.functions.in.file()`
 find package for a function  
 `find(function)`
