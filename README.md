@@ -148,6 +148,14 @@ Linkedin learning also offers many courses.
 
 ## project 
 - [change library path](https://www.accelebrate.com/library/how-to-articles/r-rstudio-library)
+## R functions   
+find all functions in a file and their package name  
+`NCmisc::list.functions.in.file()`
+find package for a function  
+`find(function)`
+returns a data.frame from RSiteSearch[r project search](https://search.r-project.org/)   
+`sos::findFn()`
+
 ### Plot
 
 #### R base plot
