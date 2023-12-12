@@ -1,0 +1,137 @@
+---
+title: "R_Tutorial"
+format: html
+---
+
+
+:::{layout-ncol=2}
+
+### data.table
+```{r warning=FALSE, message=FALSE}
+library(data.table)
+dt <- mtcars
+data.table::setDT(dt)
+
+```
+
+### dplyr 
+
+```{r warning=FALSE, message=FALSE}
+library(dplyr)
+df <- mtcars
+```
+
+:::
+
+### group by
+
+
+:::{layout-ncol=2}
+
+```{r}
+dt[, .(n=.N), by= .(cyl)]
+
+```
+
+```{r warning=FALSE}
+df %>% group_by(cyl) %>% 
+  summarize(n=n())
+```
+:::
+
+
+::: {layout-ncol=2}
+
+```{r}
+dt[, .(avg= mean(mpg)), by= .(cyl)]
+```
+
+
+```{r message=FALSE, warning=FALSE}
+
+df %>% group_by(cyl) %>% 
+  summarize(avg=mean(mpg))
+
+```
+
+:::
+
+
+::: {layout-ncol=2}
+
+```{r}
+
+dt[, .(avg= mean(mpg)), by= .(cyl,gear)]
+
+```
+
+```{r warning=FALSE, message=FALSE}
+
+df %>% group_by(cyl,gear) %>% 
+  summarize(avg=mean(mpg))
+
+```
+
+:::
+
+
+
+::: {layout-ncol=2}
+
+```{r}
+
+
+```
+
+```{r}
+
+
+```
+
+:::
+
+
+
+
+::: {layout-ncol=2}
+
+```{r}
+
+
+```
+
+```{r}
+
+
+```
+
+:::
+
+
+
+
+
+
+
+
+
+
+
+::: {layout-ncol=2}
+
+```{r}
+
+
+```
+
+```{r}
+
+
+```
+
+:::
+
+
+
+
+
