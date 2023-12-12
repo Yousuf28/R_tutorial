@@ -164,6 +164,9 @@ find package for a function
 returns a data.frame from RSiteSearch[r project search](https://search.r-project.org/)   
 `sos::findFn()`
 
+## pivot 
+- [pivot_longer](https://www.statology.org/pivot_longer-in-r/) 
+- [pivot_wider](https://www.statology.org/pivot_wider-r/) 
   
 ### Plot
 
