@@ -11,7 +11,7 @@ output: html_notebook
 
  - [cat vs print_ see second answer](https://stackoverflow.com/questions/31843662/what-is-the-difference-between-cat-and-print)
  
-```{r}
+```{r message=FALSE, warning=FALSE}
 f02 <- function(x, y) {
   # A comment
   x + y
