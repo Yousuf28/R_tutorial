@@ -119,17 +119,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<section id="data.table" class="level3 cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<section id="data.table" class="level3 cell quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <h3 class="anchored" data-anchor-id="data.table">data.table</h3>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> mtcars</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data.table<span class="sc">::</span><span class="fu">setDT</span>(dt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="dplyr" class="level3 cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<section id="dplyr" class="level3 cell quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <h3 class="anchored" data-anchor-id="dplyr">dplyr</h3>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> mtcars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> mtcars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<div class="cell quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>baseR <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(. <span class="sc">~</span> cyl, <span class="at">data =</span> df, <span class="at">FUN =</span> length)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>baseR <span class="ot">&lt;-</span> baseR[<span class="fu">c</span>(<span class="st">"cyl"</span>, <span class="st">"mpg"</span>)]  <span class="co"># Adjust column names if needed</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(baseR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  cyl mpg
+1   4  11
+2   6   7
+3   8  14</code></pre>
+</div>
+</div>
 </div>
 </div>
 <section id="group-by" class="level3">
@@ -137,7 +150,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dt[, .(<span class="at">n=</span>.N), by<span class="ot">=</span> .(cyl)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dt[, .(<span class="at">n=</span>.N), by<span class="ot">=</span> .(cyl)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   cyl  n
 1:   6  7
@@ -146,8 +159,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n=</span><span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n=</span><span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 x 2
     cyl     n
@@ -162,7 +175,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dt[, .(<span class="at">avg=</span> <span class="fu">mean</span>(mpg)), by<span class="ot">=</span> .(cyl)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dt[, .(<span class="at">avg=</span> <span class="fu">mean</span>(mpg)), by<span class="ot">=</span> .(cyl)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   cyl      avg
 1:   6 19.74286
@@ -171,8 +184,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg=</span><span class="fu">mean</span>(mpg))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg=</span><span class="fu">mean</span>(mpg))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 x 2
     cyl   avg
@@ -187,7 +200,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dt[, .(<span class="at">avg=</span> <span class="fu">mean</span>(mpg)), by<span class="ot">=</span> .(cyl,gear)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>dt[, .(<span class="at">avg=</span> <span class="fu">mean</span>(mpg)), by<span class="ot">=</span> .(cyl,gear)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   cyl gear    avg
 1:   6    4 19.750
@@ -201,8 +214,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(cyl,gear) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg=</span><span class="fu">mean</span>(mpg))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(cyl,gear) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg=</span><span class="fu">mean</span>(mpg))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 x 3
 # Groups:   cyl [3]
@@ -220,6 +233,471 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
+</section>
+<section id="pivot" class="level1">
+<h1>pivot</h1>
+<ul>
+<li><a href="https://www.statology.org/pivot_longer-in-r/">link</a></li>
+</ul>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># wide dataframe</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>wide_dt <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">player=</span><span class="fu">c</span>(<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>, <span class="st">'D'</span>),</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">year1=</span><span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">19</span>, <span class="dv">19</span>),</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">year2=</span><span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">29</span>, <span class="dv">18</span>, <span class="dv">12</span>))</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>data.table<span class="sc">::</span><span class="fu">setDT</span>(wide_dt)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wide_dt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   player year1 year2
+1:      A    12    22
+2:      B    15    29
+3:      C    19    18
+4:      D    19    12</code></pre>
+</div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>wide_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">player=</span><span class="fu">c</span>(<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>, <span class="st">'D'</span>),</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">year1=</span><span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">19</span>, <span class="dv">19</span>),</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">year2=</span><span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">29</span>, <span class="dv">18</span>, <span class="dv">12</span>))</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>wide_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  player year1 year2
+1      A    12    22
+2      B    15    29
+3      C    19    18
+4      D    19    12</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># wide dataframe to long dataframe</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>wide_to_long <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">melt</span>(wide_dt,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">measure.vars=</span><span class="fu">c</span>(<span class="st">'year1'</span>,<span class="st">'year2'</span>),</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">variable.name=</span> <span class="st">'year'</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">value.name =</span> <span class="st">'points'</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>wide_to_long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   player  year points
+1:      A year1     12
+2:      B year1     15
+3:      C year1     19
+4:      D year1     19
+5:      A year2     22
+6:      B year2     29
+7:      C year2     18
+8:      D year2     12</code></pre>
+</div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>long_df <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(wide_df,</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">cols=</span><span class="fu">c</span>(<span class="st">'year1'</span>, <span class="st">'year2'</span>),</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">names_to=</span><span class="st">'year'</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_to=</span><span class="st">'points'</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>long_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 x 3
+  player year  points
+  &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;
+1 A      year1     12
+2 A      year2     22
+3 B      year1     15
+4 B      year2     29
+5 C      year1     19
+6 C      year2     18
+7 D      year1     19
+8 D      year2     12</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># long dataframe to wide dataframe</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>long_to_wide <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">dcast</span>(wide_to_long, </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                                  player <span class="sc">~</span> year,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">value.var =</span> <span class="st">'points'</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>long_to_wide</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   player year1 year2
+1:      A    12    22
+2:      B    15    29
+3:      C    19    18
+4:      D    19    12</code></pre>
+</div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>long_to_wide_df <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(long_df,</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">names_from =</span> <span class="st">'year'</span>,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">values_from =</span> <span class="st">'points'</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>long_to_wide_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 x 3
+  player year1 year2
+  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
+1 A         12    22
+2 B         15    29
+3 C         19    18
+4 D         19    12</code></pre>
+</div>
+</div>
+</div>
+</div>
+<section id="pivot-in-base-r-with-reshape" class="level4">
+<h4 class="anchored" data-anchor-id="pivot-in-base-r-with-reshape">pivot in base R with reshape()</h4>
+<section id="long-to-wide" class="level5">
+<h5 class="anchored" data-anchor-id="long-to-wide">long to wide</h5>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># base R, reshape function</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>base_wide <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">player=</span><span class="fu">c</span>(<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>, <span class="st">'D'</span>),</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">year1=</span><span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">19</span>, <span class="dv">19</span>),</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">year2=</span><span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">29</span>, <span class="dv">18</span>, <span class="dv">12</span>))</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>base_wide</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  player year1 year2
+1      A    12    22
+2      B    15    29
+3      C    19    18
+4      D    19    12</code></pre>
+</div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># wide to long</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>long_df <span class="ot">&lt;-</span> <span class="fu">reshape</span>(</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  base_wide,</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">"long"</span>,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">varying =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"year1"</span>, <span class="st">"year2"</span>)),</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">v.names =</span> <span class="st">"points"</span>,</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">idvar =</span> <span class="st">"player"</span>,</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="fu">c</span>(<span class="st">"year1"</span>, <span class="st">"year2"</span>),</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">timevar =</span> <span class="st">"year"</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>long_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        player  year points
+A.year1      A year1     12
+B.year1      B year1     15
+C.year1      C year1     19
+D.year1      D year1     19
+A.year2      A year2     22
+B.year2      B year2     29
+C.year2      C year2     18
+D.year2      D year2     12</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="long-to-wide-1" class="level4">
+<h4 class="anchored" data-anchor-id="long-to-wide-1">long to wide</h4>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># long data</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wide_to_long)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   player  year points
+1:      A year1     12
+2:      B year1     15
+3:      C year1     19
+4:      D year1     19
+5:      A year2     22
+6:      B year2     29</code></pre>
+</div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># from long to wide</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">reshape</span>(wide_to_long, <span class="at">direction =</span> <span class="st">'wide'</span>,<span class="at">idvar =</span> <span class="st">'player'</span>,</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">timevar =</span> <span class="st">'year'</span>, <span class="at">v.names =</span> <span class="st">'points'</span>, <span class="at">sep =</span> <span class="st">'_'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   player points_year1 points_year2
+1:      A           12           22
+2:      B           15           29
+3:      C           19           18
+4:      D           19           12</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="join" class="level3">
+<h3 class="anchored" data-anchor-id="join">Join</h3>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">Id  =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"C"</span>),</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">X1  =</span> <span class="fu">c</span>(1L, 3L, 5L, 7L),</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">XY  =</span> <span class="fu">c</span>(<span class="st">"x2"</span>, <span class="st">"x4"</span>, <span class="st">"x6"</span>, <span class="st">"x8"</span>),</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">key =</span> <span class="st">"Id"</span>)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Id X1 XY
+1:  A  1 x2
+2:  B  3 x4
+3:  C  5 x6
+4:  C  7 x8</code></pre>
+</div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">Id  =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"B"</span>, <span class="st">"D"</span>),</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">Y1  =</span> <span class="fu">c</span>(1L, 3L, 5L, 7L),</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">XY  =</span> <span class="fu">c</span>(<span class="st">"y1"</span>, <span class="st">"y3"</span>, <span class="st">"y5"</span>, <span class="st">"y7"</span>),</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">key =</span> <span class="st">"Id"</span>)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Id Y1 XY
+1:  A  1 y1
+2:  B  3 y3
+3:  B  5 y5
+4:  D  7 y7</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>y[x, on <span class="ot">=</span> <span class="st">"Id"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Id Y1   XY X1 i.XY
+1:  A  1   y1  1   x2
+2:  B  3   y3  3   x4
+3:  B  5   y5  3   x4
+4:  C NA &lt;NA&gt;  5   x6
+5:  C NA &lt;NA&gt;  7   x8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># y[x, on = .(Id_x=Id_y)] # if different column name</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co"># merge(x, y, all.x = TRUE, by = "Id")</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># merge(x, y, all.x = TRUE, by.x = "x_column", by.y = "y_column") </span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co"># if column name different</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(x, y, <span class="at">by =</span> <span class="st">"Id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Id X1 XY.x Y1 XY.y
+1:  A  1   x2  1   y1
+2:  B  3   x4  3   y3
+3:  B  3   x4  5   y5
+4:  C  5   x6 NA &lt;NA&gt;
+5:  C  7   x8 NA &lt;NA&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># left_join(x, y, by.x = "x_column", by.y= "y_column") # if column</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co">#name different</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>x[y, on <span class="ot">=</span> <span class="st">"Id"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Id X1   XY Y1 i.XY
+1:  A  1   x2  1   y1
+2:  B  3   x4  3   y3
+3:  B  3   x4  5   y5
+4:  D NA &lt;NA&gt;  7   y7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># merge(x, y, all.y = TRUE, by = "Id")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">right_join</span>(x, y, <span class="at">by =</span> <span class="st">"Id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Id X1 XY.x Y1 XY.y
+1:  A  1   x2  1   y1
+2:  B  3   x4  3   y3
+3:  B  3   x4  5   y5
+4:  D NA &lt;NA&gt;  7   y7</code></pre>
+</div>
+</div>
+</div>
+</div>
+<section id="matching-rows-from-both-x-and-y" class="level4">
+<h4 class="anchored" data-anchor-id="matching-rows-from-both-x-and-y">matching rows from both x and y</h4>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>x[y, on <span class="ot">=</span> <span class="st">"Id"</span>, nomatch <span class="ot">=</span> <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Id X1 XY Y1 i.XY
+1:  A  1 x2  1   y1
+2:  B  3 x4  3   y3
+3:  B  3 x4  5   y5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># merge(x, y)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inner_join</span>(x, y, <span class="at">by =</span> <span class="st">"Id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Id X1 XY.x Y1 XY.y
+1:  A  1   x2  1   y1
+2:  B  3   x4  3   y3
+3:  B  3   x4  5   y5</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="all-the-rows-from-x-and-y" class="level4">
+<h4 class="anchored" data-anchor-id="all-the-rows-from-x-and-y">all the rows from x and y</h4>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">merge</span>(x, y, <span class="at">all =</span> <span class="cn">TRUE</span>, <span class="at">by =</span> <span class="st">"Id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Id X1 XY.x Y1 XY.y
+1:  A  1   x2  1   y1
+2:  B  3   x4  3   y3
+3:  B  3   x4  5   y5
+4:  C  5   x6 NA &lt;NA&gt;
+5:  C  7   x8 NA &lt;NA&gt;
+6:  D NA &lt;NA&gt;  7   y7</code></pre>
+</div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">full_join</span>(x, y, <span class="at">by =</span> <span class="st">"Id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Id X1 XY.x Y1 XY.y
+1:  A  1   x2  1   y1
+2:  B  3   x4  3   y3
+3:  B  3   x4  5   y5
+4:  C  5   x6 NA &lt;NA&gt;
+5:  C  7   x8 NA &lt;NA&gt;
+6:  D NA &lt;NA&gt;  7   y7</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="return-rows-from-x-matching-y" class="level4">
+<h4 class="anchored" data-anchor-id="return-rows-from-x-matching-y">Return rows from x matching y</h4>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(x[y<span class="sc">$</span>Id, <span class="at">on =</span> <span class="st">"Id"</span>, <span class="at">nomatch =</span> <span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Id X1 XY
+1:  A  1 x2
+2:  B  3 x4</code></pre>
+</div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">semi_join</span>(x, y, <span class="at">by =</span> <span class="st">"Id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Id X1 XY
+1:  A  1 x2
+2:  B  3 x4</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="return-rows-from-x-not-matching-y" class="level4">
+<h4 class="anchored" data-anchor-id="return-rows-from-x-not-matching-y">Return rows from x not matching y</h4>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>x[<span class="sc">!</span>y, on <span class="ot">=</span> <span class="st">"Id"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Id X1 XY
+1:  C  5 x6
+2:  C  7 x8</code></pre>
+</div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anti_join</span>(x, y, <span class="at">by =</span> <span class="st">"Id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Id X1 XY
+1:  C  5 x6
+2:  C  7 x8</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="bind" class="level2">
+<h2 class="anchored" data-anchor-id="bind">bind</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> mtcars[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> mtcars[<span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    mpg cyl disp  hp
+1: 21.0   6  160 110
+2: 21.0   6  160 110
+3: 22.8   4  108  93
+4: 21.4   6  258 110
+5: 18.7   8  360 175</code></pre>
+</div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    mpg cyl  disp  hp
+1: 18.1   6 225.0 105
+2: 14.3   8 360.0 245
+3: 24.4   4 146.7  62
+4: 22.8   4 140.8  95
+5: 19.2   6 167.6 123</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>x_dt <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">as.data.table</span>(x)</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>y_dt <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">as.data.table</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>data.table<span class="sc">::</span><span class="fu">rbindlist</span>(<span class="fu">list</span>(x_dt,y_dt))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     mpg cyl  disp  hp
+ 1: 21.0   6 160.0 110
+ 2: 21.0   6 160.0 110
+ 3: 22.8   4 108.0  93
+ 4: 21.4   6 258.0 110
+ 5: 18.7   8 360.0 175
+ 6: 18.1   6 225.0 105
+ 7: 14.3   8 360.0 245
+ 8: 24.4   4 146.7  62
+ 9: 22.8   4 140.8  95
+10: 19.2   6 167.6 123</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data.table::rbindlist(list(x_dt,y_dt), </span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># use.names = FALSE,</span></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># fill = FALSE,</span></span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="co">#                       idcol = 'id')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     mpg cyl  disp  hp
+ 1: 21.0   6 160.0 110
+ 2: 21.0   6 160.0 110
+ 3: 22.8   4 108.0  93
+ 4: 21.4   6 258.0 110
+ 5: 18.7   8 360.0 175
+ 6: 18.1   6 225.0 105
+ 7: 14.3   8 360.0 245
+ 8: 24.4   4 146.7  62
+ 9: 22.8   4 140.8  95
+10: 19.2   6 167.6 123</code></pre>
+</div>
+</div>
+</div>
+</div>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
@@ -250,6 +728,127 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'reticulate' was built under R version 4.1.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>df_py <span class="ot">&lt;-</span> reticulate<span class="sc">::</span><span class="fu">r_to_py</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>df_python <span class="op">=</span> r.df_py</span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the Python dataframe</span></span>
+<span id="cb83-6"><a href="#cb83-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_python)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     mpg  cyl   disp     hp  drat     wt   qsec   vs   am  gear  carb
+0   21.0  6.0  160.0  110.0  3.90  2.620  16.46  0.0  1.0   4.0   4.0
+1   21.0  6.0  160.0  110.0  3.90  2.875  17.02  0.0  1.0   4.0   4.0
+2   22.8  4.0  108.0   93.0  3.85  2.320  18.61  1.0  1.0   4.0   1.0
+3   21.4  6.0  258.0  110.0  3.08  3.215  19.44  1.0  0.0   3.0   1.0
+4   18.7  8.0  360.0  175.0  3.15  3.440  17.02  0.0  0.0   3.0   2.0
+5   18.1  6.0  225.0  105.0  2.76  3.460  20.22  1.0  0.0   3.0   1.0
+6   14.3  8.0  360.0  245.0  3.21  3.570  15.84  0.0  0.0   3.0   4.0
+7   24.4  4.0  146.7   62.0  3.69  3.190  20.00  1.0  0.0   4.0   2.0
+8   22.8  4.0  140.8   95.0  3.92  3.150  22.90  1.0  0.0   4.0   2.0
+9   19.2  6.0  167.6  123.0  3.92  3.440  18.30  1.0  0.0   4.0   4.0
+10  17.8  6.0  167.6  123.0  3.92  3.440  18.90  1.0  0.0   4.0   4.0
+11  16.4  8.0  275.8  180.0  3.07  4.070  17.40  0.0  0.0   3.0   3.0
+12  17.3  8.0  275.8  180.0  3.07  3.730  17.60  0.0  0.0   3.0   3.0
+13  15.2  8.0  275.8  180.0  3.07  3.780  18.00  0.0  0.0   3.0   3.0
+14  10.4  8.0  472.0  205.0  2.93  5.250  17.98  0.0  0.0   3.0   4.0
+15  10.4  8.0  460.0  215.0  3.00  5.424  17.82  0.0  0.0   3.0   4.0
+16  14.7  8.0  440.0  230.0  3.23  5.345  17.42  0.0  0.0   3.0   4.0
+17  32.4  4.0   78.7   66.0  4.08  2.200  19.47  1.0  1.0   4.0   1.0
+18  30.4  4.0   75.7   52.0  4.93  1.615  18.52  1.0  1.0   4.0   2.0
+19  33.9  4.0   71.1   65.0  4.22  1.835  19.90  1.0  1.0   4.0   1.0
+20  21.5  4.0  120.1   97.0  3.70  2.465  20.01  1.0  0.0   3.0   1.0
+21  15.5  8.0  318.0  150.0  2.76  3.520  16.87  0.0  0.0   3.0   2.0
+22  15.2  8.0  304.0  150.0  3.15  3.435  17.30  0.0  0.0   3.0   2.0
+23  13.3  8.0  350.0  245.0  3.73  3.840  15.41  0.0  0.0   3.0   4.0
+24  19.2  8.0  400.0  175.0  3.08  3.845  17.05  0.0  0.0   3.0   2.0
+25  27.3  4.0   79.0   66.0  4.08  1.935  18.90  1.0  1.0   4.0   1.0
+26  26.0  4.0  120.3   91.0  4.43  2.140  16.70  0.0  1.0   5.0   2.0
+27  30.4  4.0   95.1  113.0  3.77  1.513  16.90  1.0  1.0   5.0   2.0
+28  15.8  8.0  351.0  264.0  4.22  3.170  14.50  0.0  1.0   5.0   4.0
+29  19.7  6.0  145.0  175.0  3.62  2.770  15.50  0.0  1.0   5.0   6.0
+30  15.0  8.0  301.0  335.0  3.54  3.570  14.60  0.0  1.0   5.0   8.0
+31  21.4  4.0  121.0  109.0  4.11  2.780  18.60  1.0  1.0   4.0   2.0</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>result_pandas <span class="op">=</span> df_python.groupby(<span class="st">'cyl'</span>).size().reset_index(name<span class="op">=</span><span class="st">'n'</span>)</span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result_pandas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   cyl   n
+0  4.0  11
+1  6.0   7
+2  8.0  14</code></pre>
+</div>
+</div>
+</section>
 </section>
 
 </main>

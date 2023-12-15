@@ -4,7 +4,7 @@ format: html
 ---
 
 
-:::{layout-ncol=2}
+:::{layout-ncol=3}
 
 ### data.table
 ```{r warning=FALSE, message=FALSE}
@@ -18,7 +18,16 @@ data.table::setDT(dt)
 
 ```{r warning=FALSE, message=FALSE}
 library(dplyr)
+library(tidyr)
+library(magrittr)
 df <- mtcars
+```
+
+```{r}
+baseR <- aggregate(. ~ cyl, data = df, FUN = length)
+baseR <- baseR[c("cyl", "mpg")]  # Adjust column names if needed
+print(baseR)
+
 ```
 
 :::
@@ -74,8 +83,298 @@ df %>% group_by(cyl,gear) %>%
 
 :::
 
+# pivot
+
+- [link](https://www.statology.org/pivot_longer-in-r/)
+
+::: {layout-ncol=2}
 
 
+```{r}
+# wide dataframe
+wide_dt <- data.frame(player=c('A', 'B', 'C', 'D'),
+                 year1=c(12, 15, 19, 19),
+                 year2=c(22, 29, 18, 12))
+data.table::setDT(wide_dt)
+head(wide_dt)
+
+```
+
+
+```{r}
+wide_df <- data.frame(player=c('A', 'B', 'C', 'D'),
+                 year1=c(12, 15, 19, 19),
+                 year2=c(22, 29, 18, 12))
+wide_df
+```
+
+:::
+
+::: {layout-ncol=2}
+
+
+```{r}
+# wide dataframe to long dataframe
+wide_to_long <- data.table::melt(wide_dt,
+                                 measure.vars=c('year1','year2'),
+                                 variable.name= 'year',
+                                 value.name = 'points')
+wide_to_long
+
+```
+
+
+```{r}
+long_df <- tidyr::pivot_longer(wide_df,
+                    cols=c('year1', 'year2'),
+                    names_to='year',
+                    values_to='points')
+
+long_df
+```
+
+:::
+
+::: {layout-ncol=2}
+
+```{r}
+# long dataframe to wide dataframe
+long_to_wide <- data.table::dcast(wide_to_long, 
+                                  player ~ year,
+                                  value.var = 'points')
+long_to_wide
+```
+
+```{r}
+long_to_wide_df <- tidyr::pivot_wider(long_df,
+                              names_from = 'year',
+                              values_from = 'points')
+long_to_wide_df
+```
+
+:::
+
+#### pivot in base R with reshape()
+##### long to wide
+::: {layout-ncol=2}
+
+```{r}
+# base R, reshape function
+base_wide <- data.frame(player=c('A', 'B', 'C', 'D'),
+                 year1=c(12, 15, 19, 19),
+                 year2=c(22, 29, 18, 12))
+base_wide
+```
+
+
+
+```{r}
+# wide to long
+long_df <- reshape(
+  base_wide,
+  direction = "long",
+  varying = list(c("year1", "year2")),
+  v.names = "points",
+  idvar = "player",
+  times = c("year1", "year2"),
+  timevar = "year"
+)
+long_df
+
+```
+
+:::
+
+#### long to wide
+::: {layout-ncol=2}
+
+```{r}
+# long data
+head(wide_to_long)
+```
+
+
+```{r}
+# from long to wide
+reshape(wide_to_long, direction = 'wide',idvar = 'player',
+        timevar = 'year', v.names = 'points', sep = '_')
+```
+
+
+::: 
+
+### Join 
+
+::: {layout-ncol=2}
+
+```{r}
+x <- data.table(Id  = c("A", "B", "C", "C"),
+                X1  = c(1L, 3L, 5L, 7L),
+                XY  = c("x2", "x4", "x6", "x8"),
+                key = "Id")
+x
+
+```
+
+```{r}
+
+y <- data.table(Id  = c("A", "B", "B", "D"),
+                Y1  = c(1L, 3L, 5L, 7L),
+                XY  = c("y1", "y3", "y5", "y7"),
+                key = "Id")
+
+y
+```
+
+:::
+
+
+::: {layout-ncol=2}
+
+```{r}
+y[x, on = "Id"]
+# y[x, on = .(Id_x=Id_y)] # if different column name
+# merge(x, y, all.x = TRUE, by = "Id")
+# merge(x, y, all.x = TRUE, by.x = "x_column", by.y = "y_column") 
+# if column name different
+
+```
+
+```{r}
+left_join(x, y, by = "Id")
+# left_join(x, y, by.x = "x_column", by.y= "y_column") # if column
+#name different
+
+```
+
+:::
+
+
+
+::: {layout-ncol=2}
+
+
+
+```{r}
+x[y, on = "Id"]
+# merge(x, y, all.y = TRUE, by = "Id")
+
+```
+
+```{r}
+right_join(x, y, by = "Id")
+
+```
+
+:::
+
+#### matching rows from both x and y
+
+::: {layout-ncol=2}
+
+```{r}
+x[y, on = "Id", nomatch = 0]
+# merge(x, y)
+
+```
+
+```{r}
+inner_join(x, y, by = "Id")
+
+```
+
+:::
+
+#### all the rows from x and y
+::: {layout-ncol=2}
+
+```{r}
+merge(x, y, all = TRUE, by = "Id")
+
+```
+
+```{r}
+full_join(x, y, by = "Id")
+
+```
+
+:::
+
+#### Return rows from x matching y
+
+::: {layout-ncol=2}
+
+```{r}
+unique(x[y$Id, on = "Id", nomatch = 0])
+
+```
+
+```{r}
+semi_join(x, y, by = "Id")
+
+```
+
+:::
+
+
+#### Return rows from x not matching y
+
+::: {layout-ncol=2}
+
+```{r}
+
+x[!y, on = "Id"]
+
+```
+
+```{r}
+anti_join(x, y, by = "Id")
+
+```
+
+:::
+
+## bind
+
+::: {layout-ncol=2}
+
+```{r}
+x <- mtcars[1:5, 1:4]
+y <- mtcars[6:10,1:4]
+x
+
+```
+
+```{r}
+y
+
+```
+
+:::
+
+```{r}
+x_dt <- data.table::as.data.table(x)
+y_dt <- data.table::as.data.table(y)
+
+```
+
+::: {layout-ncol=2}
+
+```{r}
+data.table::rbindlist(list(x_dt,y_dt))
+# data.table::rbindlist(list(x_dt,y_dt), 
+                        # use.names = FALSE,
+                          # fill = FALSE,
+#                       idcol = 'id')
+
+```
+
+```{r}
+dplyr::bind_rows(x,y)
+
+```
+
+:::
 ::: {layout-ncol=2}
 
 ```{r}
@@ -89,10 +388,6 @@ df %>% group_by(cyl,gear) %>%
 ```
 
 :::
-
-
-
-
 ::: {layout-ncol=2}
 
 ```{r}
@@ -106,17 +401,6 @@ df %>% group_by(cyl,gear) %>%
 ```
 
 :::
-
-
-
-
-
-
-
-
-
-
-
 ::: {layout-ncol=2}
 
 ```{r}
@@ -130,8 +414,109 @@ df %>% group_by(cyl,gear) %>%
 ```
 
 :::
+::: {layout-ncol=2}
+
+```{r}
+
+
+```
+
+```{r}
+
+
+```
+
+:::
+::: {layout-ncol=2}
+
+```{r}
+
+
+```
+
+```{r}
+
+
+```
+
+:::
+::: {layout-ncol=2}
+
+```{r}
+
+
+```
+
+```{r}
+
+
+```
+
+:::
+::: {layout-ncol=2}
+
+```{r}
+
+
+```
+
+```{r}
+
+
+```
+
+:::
+::: {layout-ncol=2}
+
+```{r}
+
+
+```
+
+```{r}
+
+
+```
+
+:::
+::: {layout-ncol=2}
+
+```{r}
+
+
+```
+
+```{r}
+library(reticulate)
+
+df_py <- reticulate::r_to_py(df)
+
+```
+
+:::
+
+
+```{python}
+import pandas as pd
+
+```
 
 
 
+```{python}
 
 
+df_python = r.df_py
+
+# Print the Python dataframe
+print(df_python)
+
+```
+
+
+
+```{python}
+result_pandas = df_python.groupby('cyl').size().reset_index(name='n')
+print(result_pandas)
+
+```
