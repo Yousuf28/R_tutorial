@@ -33,16 +33,22 @@ Linkedin learning also offers many courses.
 - [Mastering Shiny](https://mastering-shiny.org)
 
 #### More Books
+- [The R Book - Michael Crawley](https://www.cs.upc.edu/~robert/teaching/estadistica/TheRBook.pdf)
 - [Big Book of R](https://www.bigbookofr.com/index.html)
 - [Hands-On Programming with R](https://rstudio-education.github.io/hopr/)
 - [An Introduction to R](https://intro2r.com/)
 - [Modern R](https://b-rodrigues.github.io/modern_R/)
-- [The R Book - Michael Crawley](https://www.cs.upc.edu/~robert/teaching/estadistica/TheRBook.pdf)
 - [R Cookbook](https://rc2e.com/)
 - [Efficient R programming](https://csgillespie.github.io/efficientR/)
 - [Best Coding Practices for R](https://bookdown.org/content/d1e53ac9-28ce-472f-bc2c-f499f18264a3/)
 - [THE ART OF R PROGRAMMING](https://diytranscriptomics.com/Reading/files/The%20Art%20of%20R%20Programming.pdf)
 - [The R Inferno](https://www.burns-stat.com/pages/Tutor/R_inferno.pdf)
+
+#### R Graphics 
+This is really good for Base R plot  
+- [R Graphics](https://github.com/ctnguyen/ctnguyen/blob/master/ctn_R/%5Bbook%5D%20R%20Graphics%20_%20Paul%20Murrell%202006.pdf)
+- [another pdf link for R Graphics](http://students.aiu.edu/submissions/profiles/resources/onlineBook/k9S8g4_R_Graphics-2.pdf)
+
 #### Awesome R
 
 - [awesome-R](https://github.com/qinwf/awesome-R)
